@@ -20,4 +20,8 @@ class Login{
     public static function Hello(){
         echo "Hello world";
     }
+
+    public function add(){
+        return "提交啦啦啦";
+    }
 }
