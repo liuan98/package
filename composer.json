@@ -1,0 +1,21 @@
+{
+    "name": "administrator/package",
+    "description": "第一个版本",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "917549390",
+            "email": "917549390@qq.com"
+        }
+    ],
+    "require": {
+        "php" : ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Login\\":"src/Login"
+        }
+    }
+}
