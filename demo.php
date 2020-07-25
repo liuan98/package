@@ -6,5 +6,5 @@
  * Time: 19:32
  */
 require_once './vendor/autoload.php';
-use Login\Login;
+use Project\Login\Login;
 Login::Hello();
