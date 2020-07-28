@@ -1,6 +1,6 @@
 {
     "name": "jxsf/package",
-    "description": "登陆中间件",
+    "description": "登陆退出",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
