@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace Package\FooMiddleware;
+namespace Project\FooMiddleware;
 
 use App\Controller\IndexController;
 use Hyperf\Utils\ApplicationContext;
