@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace Jxsf\Package\Project;
+namespace Package\FooMiddleware;
 
 use App\Controller\IndexController;
 use Hyperf\Utils\ApplicationContext;
@@ -46,7 +46,11 @@ class FooMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // 根据具体业务判断逻辑走向，这里假设用户携带的token有效
-        $token = $this->request->input('token');
+        $uid = $this->request->input('uid');
+        $redis = $this->container->get(\Hyperf\Redis\Redis::class);
+        $token = $redis->get('token'.$uid);
+
+        echo $token;
         if(!$token){
             return $this->response->json(
                 [
