@@ -62,20 +62,31 @@ class Login{
      */
     public function Logout(){
         $token = $this->request->input('token');
-        var_dump($token);
+
         $redis = $this->container->get(\Hyperf\Redis\Redis::class);
         $code = $redis->get('token'.$token);
 
         $data = $redis->del('token'.$code);
-        var_dump($data);
-        return $this->response->json(
-            [
-                'code' => -1,
-                'data' => [
-                    'error' => '成功登出',
-                ],
-            ]
-        );
+        if($data){
+            return $this->response->json(
+                [
+                    'code' => 200,
+                    'data' => [
+                        'error' => '成功登出',
+                    ],
+                ]
+            );
+        }else{
+            return $this->response->json(
+                [
+                    'code' => -1,
+                    'data' => [
+                        'error' => '登出失败',
+                    ],
+                ]
+            );
+        }
+
     }
 
     /**
