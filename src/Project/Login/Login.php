@@ -7,15 +7,29 @@
  */
 namespace Project\Login;
 use Psr\Container\ContainerInterface;
+use Hyperf\HttpServer\Contract\RequestInterface;
+use Hyperf\HttpServer\Contract\ResponseInterface as HttpResponse;
+
 class Login{
     protected $expire = 0;
     protected $authkey = '';
     protected $container;
+    /**
+     * @var RequestInterface
+     */
+    protected $request;
 
-    public function __construct(ContainerInterface $container)
+    /**
+     * @var HttpResponse
+     */
+    protected $response;
+
+    public function __construct(ContainerInterface $container,HttpResponse $response,RequestInterface $request)
     {
         $this->authkey = md5(md5('cwt0627'));
         $this->container = $container;
+        $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -36,6 +50,32 @@ class Login{
         $redis->set('token'.$token,$token,$time);
 
         return $token;
+    }
+
+    /**
+     * Notes:
+     * User: liuan
+     * Date: 2020/7/28 0028
+     * Time: 22:40
+     * @return mixed
+     * 退出
+     */
+    public function Logout(){
+        $token = $this->request->input('token');
+        var_dump($token);
+        $redis = $this->container->get(\Hyperf\Redis\Redis::class);
+        $code = $redis->get('token'.$token);
+
+        $data = $redis->del('token'.$code);
+        var_dump($data);
+        return $this->response->json(
+            [
+                'code' => -1,
+                'data' => [
+                    'error' => '成功登出',
+                ],
+            ]
+        );
     }
 
     /**
