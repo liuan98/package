@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="a715e63b-cef2-49dd-b15f-efc7b13bca4a" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="a715e63b-cef2-49dd-b15f-efc7b13bca4a" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/Project/public/FooMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.php" beforeDir="false" afterPath="$PROJECT_DIR$/demo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Project/Login/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Project/Login/Login.php" afterDir="false" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+    </list>
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,13 +62,19 @@
         </counts>
       </usages-collector>
     </session>
+<<<<<<< HEAD
+    <session id="1326356535">
+=======
     <session id="-282488589">
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
+<<<<<<< HEAD
+=======
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="php" value="224" />
@@ -76,15 +95,32 @@
           <entry key="PHP" value="1" />
         </counts>
       </usages-collector>
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo.php">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+=======
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/demo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
             </state>
           </provider>
         </entry>
@@ -92,8 +128,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="330">
               <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="510">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+=======
+            <state relative-caret-position="210">
+              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
             </state>
           </provider>
         </entry>
@@ -101,15 +147,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="30">
+              <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+=======
             <state>
               <caret column="8" selection-start-column="8" selection-end-column="8" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Project/Login/Login.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="570">
+              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+=======
             <state relative-caret-position="360">
               <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
             </state>
@@ -124,6 +179,7 @@
               <folding>
                 <element signature="e#158#193#0#PHP" expanded="true" />
               </folding>
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
             </state>
           </provider>
         </entry>
@@ -179,6 +235,8 @@
               <item name="package" type="b2602c69:ProjectViewProjectNode" />
               <item name="package" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
             <path>
               <item name="package" type="b2602c69:ProjectViewProjectNode" />
               <item name="package" type="462c0819:PsiDirectoryNode" />
@@ -208,6 +266,7 @@
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="composer" type="462c0819:PsiDirectoryNode" />
             </path>
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
           </expand>
           <select />
         </subPane>
@@ -217,7 +276,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
     <property name="last_opened_file_path" value="D:/Hyperf" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -243,18 +306,45 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595673869496</updated>
+<<<<<<< HEAD
+      <workItem from="1595673870771" duration="6730000" />
+      <workItem from="1595845260378" duration="791000" />
+=======
       <workItem from="1595673870771" duration="8106000" />
+<<<<<<< HEAD
       <workItem from="1595852473430" duration="5148000" />
+=======
+      <workItem from="1595852473430" duration="3816000" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="13254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="7521000" />
+=======
+    <option name="totallyTimeSpent" value="11922000" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
+    <layout>
+<<<<<<< HEAD
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -284,6 +374,22 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Login.php" />
     <entry file="file://$PROJECT_DIR$/src/Login/Login.php" />
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/composer.lock" />
+    <entry file="file://$PROJECT_DIR$/vendor/autoload.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
+    <entry file="file://$PROJECT_DIR$/demo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+=======
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -306,19 +412,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Project/Login/Login.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="360">
           <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+=======
+        <state relative-caret-position="210">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state>
           <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="510">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+=======
+        <state relative-caret-position="95">
+          <caret line="71" column="48" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="48" />
+          <folding>
+            <element signature="e#158#193#0#PHP" expanded="true" />
+          </folding>
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Project/Login/Login.php">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+=======
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
@@ -327,11 +461,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Project/public/FooMiddleware.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="165">
           <caret line="83" column="1" lean-forward="true" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
           <folding>
             <element signature="e#158#193#0#PHP" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="240">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+>>>>>>> 89475d34888d9d4fc3531e3a1ae502782de584b3
+>>>>>>> 3ab784e454f9d960f15614705a769ca0d631b5bd
         </state>
       </provider>
     </entry>

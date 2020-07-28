@@ -1,6 +1,6 @@
 {
     "name": "jxsf/package",
-    "description": "第一个版本",
+    "description": "登陆中间件",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
@@ -15,7 +15,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Project\\Login\\":"src/Project/Login"
+            "Project\\Login\\":"src/Project/Login",
+            "Project\\FooMiddleware\\":"src/Project/FooMiddleware"
         }
     }
 }

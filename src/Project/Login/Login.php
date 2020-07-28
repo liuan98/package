@@ -6,28 +6,35 @@
  * Time: 20:38
  */
 namespace Project\Login;
-
+use Psr\Container\ContainerInterface;
 class Login{
     protected $expire = 0;
     protected $authkey = '';
+    protected $container;
 
-    public function __construct()
+    public function __construct(ContainerInterface $container)
     {
         $this->authkey = md5(md5('cwt0627'));
+        $this->container = $container;
     }
 
     /**
-     * Notes:
-     * User: liuan
-     * Date: 2020/7/27 0027
-     * Time: 21:10
+     * @param $time//过期时间
      * @return string
+     * User: liuan
+     * Date: 2020/7/28 11:28
      */
-    public function Login(){
+    public function Login($time){
         $str="QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
+
         $name = substr(str_shuffle($str),26,10);
         $password = md5(substr(str_shuffle($str),26,10));
+
         $token = base64_encode($this->authcode($name . '|' . $password, 'ENCODE', $this->authkey,$this->expire));
+
+        $redis = $this->container->get(\Hyperf\Redis\Redis::class);
+        $redis->set('token'.$token,$token,$time);
+
         return $token;
     }
 
