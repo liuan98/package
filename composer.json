@@ -1,6 +1,6 @@
 {
     "name": "jxsf/package",
-    "description": "修改登录版本",
+    "description": "登陆中间件",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
