@@ -7,4 +7,3 @@
  */
 require_once './vendor/autoload.php';
 use Project\Login\Login;
-Login::Hello();
