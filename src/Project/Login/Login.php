@@ -19,13 +19,12 @@ class Login{
     }
 
     /**
-     * @param $uid//用户id
      * @param $time//过期时间
      * @return string
      * User: liuan
      * Date: 2020/7/28 11:28
      */
-    public function Login($uid,$time){
+    public function Login($time){
         $str="QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
 
         $name = substr(str_shuffle($str),26,10);
@@ -34,7 +33,7 @@ class Login{
         $token = base64_encode($this->authcode($name . '|' . $password, 'ENCODE', $this->authkey,$this->expire));
 
         $redis = $this->container->get(\Hyperf\Redis\Redis::class);
-        $redis->set('token'.$uid,$token,$time);
+        $redis->set('token'.$token,$token,$time);
 
         return $token;
     }
