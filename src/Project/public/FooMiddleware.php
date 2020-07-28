@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace App\Middleware\Auth;
+namespace Jxsf\Package\Project;
 
 use App\Controller\IndexController;
 use Hyperf\Utils\ApplicationContext;
