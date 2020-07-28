@@ -1,6 +1,6 @@
 {
     "name": "jxsf/package",
-    "description": "第一个版本",
+    "description": "登录版本",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
