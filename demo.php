@@ -7,3 +7,7 @@
  */
 require_once './vendor/autoload.php';
 use Project\Login\Login;
+use Project\FooMiddleware\FooMiddleware;
+use Project\WeChatH5\WeChatH5;
+use Project\WeChatApplet\WeChatApplet;
+use Project\AlipayH5\AlipayH5;

@@ -16,7 +16,10 @@
     "autoload": {
         "psr-4": {
             "Project\\Login\\":"src/Project/Login",
-            "Project\\FooMiddleware\\":"src/Project/FooMiddleware"
+            "Project\\FooMiddleware\\":"src/Project/FooMiddleware",
+            "Project\\WeChatH5\\":"src/Project/WeChatH5/",
+            "Project\\WeChatApplet\\":"src/Project/WeChatApplet/",
+            "Project\\AlipayH5\\":"src/Project/AlipayH5/"
         }
     }
 }
