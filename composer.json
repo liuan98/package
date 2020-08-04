@@ -1,6 +1,6 @@
 {
     "name": "jxsf/package",
-    "description": "登陆退出",
+    "description": "H5支付",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
