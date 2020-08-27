@@ -14,63 +14,87 @@ class WeChatH5{
 
     }
 
-    public function WeChatH5(){
-        $key = '6082f34026647a65a2530ba21c3d213d';//秘钥在微信开放平台中的
-        $appid = 'wxd678efh567hg6787';//微信分配的公众账号ID
-        $mch_id = '1230000109';//微信支付分配的商户号
-        $nonce_str = md5(time().mt_rand(0,1000));//随机字符串
-        $body = '腾讯充值中心-QQ会员充值';//商品简单描述
-        $notify_url = 'http://www.weixin.qq.com/wxpay/pay.php';//商品简单描述
-        $out_trade_no = '20150806125346';//订单号
-        $scene_info = '{"h5_info":{"type":"Wap","wap_url":"http://www.weixin.qq.com","wap_name":"支付"}}';//场景信息 必要参数
-        $spbill_create_ip = $_SERVER['REMOTE_ADDR'];
-        $total_fee = '1';//金额
-        $trade_type = 'MWEB';//H5支付的交易类型为MWEB
+    public function WeChatH5($data){
+        $ip =$_SERVER;
+        $create_ip  =  strstr ( $ip['SSH_CLIENT'],' ',true );//获取ip
 
-        $signA ="appid=$appid&body=$body&mch_id=$mch_id&nonce_str=$nonce_str&notify_url=$notify_url&out_trade_no=$out_trade_no&scene_info=$scene_info&spbill_create_ip=$spbill_create_ip&total_fee=$total_fee&trade_type=$trade_type";
-        $strSignTmp = $signA."&key=$key";
-        $sign = strtoupper(MD5($strSignTmp));//签名
+        $nonce = md5(time().mt_rand(0,1000));//随机字符串
 
-        $parameter = [
-            'appid' => $appid,//微信分配的公众账号ID
-            'mch_id' => $mch_id,//微信支付分配的商户号
-            'nonce_str' => $nonce_str,//随机字符串
-            'sign' => $sign,//签名
-            'body' => $body,//商品简单描述
-            'out_trade_no' => $out_trade_no,//订单号
-            'total_fee' => $total_fee,//金额
-            'spbill_create_ip' => $spbill_create_ip,//获取用户ip
-            'notify_url' => $notify_url,//回调地址
-            'trade_type' => $trade_type,//H5支付的交易类型为MWEB
-            'scene_info' => $scene_info,//该字段用于上报支付的场景信息,针对H5支付有以下三种场景,请根据对应场景上报
-        ];
+        $money = $data['price'] * 100; //商品价格
+        // 前台请求的参数
+        $title = $data['name'];//商品名称
 
-        $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
-        $rest = $this->httpRequest($url,$parameter);
-        return $rest;
-    }
+        $nonce_str = $nonce; //随机字符串
+        //var_dump($nonce_str,__LINE__);
+        $appid = $data['appid'];//"wx8b25a352402a35ec"; //在微信开放平台中的　appid(先要创建一个移动应用)
+        $mch_id = $data['mch_id'];//"1271505401";  //商户号，在商户平台中查看
+        $key = $data['key'];//"GZxundongkeji2017070707070707070"; //在微信开放平台中的　
+        $notify_url = $data['notify_url'];//"http://lightning.xundong.top/Pay"; //用户支付完后微信会来触发这个脚本，是处理业务逻辑的地方
+        //订单号可以灵活使用，比如我这个地方把userid加进去，在异步回调的时候方便直接操作用户
+        $out_trade_no = $data['number'];//订单号
+        $spbill_create_ip =  $create_ip;//获取ip
+//            var_dump($spbill_create_ip,__LINE__);
 
-    function httpRequest($url, $post_data = '', $method = 'GET')
-    {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
-        if ($method == 'POST') {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            if ($post_data != '') {
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
-            }
+        //场景信息
+        $scene_info = "{'h5_info': {'type'':'Wap','wap_url': 'http://www.lpjphp.cn','wap_name': 'h5pay'}}";
+
+        // 下面的参数含义直接看文档
+        $tmpArr = array(
+            'appid'=>$appid,//不要填成了 公众号原始id
+            'scene_info'=>$scene_info,
+            'body'=>$title,
+            'mch_id'=>$mch_id,
+            'nonce_str'=>$nonce_str,
+            'notify_url'=>$notify_url,
+            'out_trade_no'=>$out_trade_no,
+            'spbill_create_ip'=>$spbill_create_ip,
+            'total_fee'=>$money,
+            'trade_type'=>'MWEB'
+        );
+        // 签名逻辑官网有说明，签名步骤就不解释了
+        ksort($tmpArr);
+
+        $buff = "";
+        foreach ($tmpArr as $k => $v)
+        {
+            $buff .= $k . "=" . $v . "&";
         }
+        $buff = trim($buff, "&");
+        $stringSignTemp=$buff."&key=$key";
+        $sign= strtoupper(md5($stringSignTemp)); //签名
+//            var_dump($sign,__LINE__);
 
-        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $result = curl_exec($curl);
-        curl_close($curl);
-        return $result;
+        $xml = "<xml>
+            <appid>".$appid."</appid>
+            <body>".$title."</body>
+            <mch_id>".$mch_id."</mch_id>
+            <nonce_str>".$nonce_str."</nonce_str>
+            <notify_url>".$notify_url."</notify_url>
+            <out_trade_no>".$out_trade_no."</out_trade_no>
+            <spbill_create_ip>".$spbill_create_ip."</spbill_create_ip>
+            <total_fee>".$money."</total_fee>
+            <trade_type>MWEB</trade_type>
+            <sign>".$sign."</sign>
+            <scene_info>".$scene_info."</scene_info>
+            </xml> ";
+
+        $posturl = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+
+        $ch = curl_init($posturl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $xmlobj = json_decode(json_encode(simplexml_load_string($response, 'SimpleXMLElement', LIBXML_NOCDATA )),true);
+//            var_dump($xmlobj,__LINE__);
+
+        if ($xmlobj['return_code'] == 'SUCCESS' && $xmlobj['return_code'] == 'SUCCESS') {
+            return $xmlobj;
+        }else{
+            return '失败';
+        }
     }
+
 }
