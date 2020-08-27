@@ -1,6 +1,6 @@
 {
     "name": "jxsf/package",
-    "description": "H5支付",
+    "description": "H5支付加退款",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",

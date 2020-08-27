@@ -14,6 +14,13 @@ class WeChatH5{
 
     }
 
+    /**
+     * @param $data
+     * @return mixed|string
+     * User: liuan
+     * Date: 2020/8/27 15:06
+     * h5支付
+     */
     public function WeChatH5($data){
         $ip =$_SERVER;
         $create_ip  =  strstr ( $ip['SSH_CLIENT'],' ',true );//获取ip
@@ -92,6 +99,171 @@ class WeChatH5{
 
         if ($xmlobj['return_code'] == 'SUCCESS' && $xmlobj['return_code'] == 'SUCCESS') {
             return $xmlobj;
+        }else{
+            return '失败';
+        }
+    }
+
+
+    ///////////////////////////////////////
+    /////////////////////////////////////////
+
+
+    /**
+     * @param $length
+     * @return null|string
+     * User: liuan
+     * Date: 2020/8/25 11:02
+     * 获取指定长度的随机字符串
+     */
+    public function getRandChar($length){
+        $str = null;
+        $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+        $max = strlen($strPol)-1;
+        for($i=0;$i<$length;$i++){
+            $str.=$strPol[rand(0,$max)];//rand($min,$max)生成介于min和max两个数之间的一个随机整数
+        }
+        return $str;
+    }
+
+    /**
+     * @param $arr
+     * @return string
+     * User: liuan
+     * Date: 2020/8/25 11:03
+     * 数组转xml
+     */
+    public function arrayToXml($arr)
+    {
+        $xml = "<xml>";
+        foreach ($arr as $key=>$val)
+        {
+            if (is_numeric($val))
+            {
+                $xml.="<".$key.">".$val."</".$key.">";
+
+            }
+            else
+                $xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
+        }
+        $xml.="</xml>";
+        return $xml;
+    }
+
+    /**
+     * @param $xml
+     * @param $url
+     * @param int $second
+     * @param int $cert
+     * @param $list
+     * @return mixed|string
+     * User: liuan
+     * Date: 2020/8/27 15:10
+     */
+    public function postXmlCurl($xml,$url,$second=30, $cert=0 ,$list)
+    {
+        //初始化curl
+        $ch = curl_init();
+        //超时时间
+        curl_setopt($ch,CURLOPT_TIMEOUT,$second);
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,FALSE);
+        //设置header
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        //要求结果为字符串且输出到屏幕上
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        //post提交方式
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+
+        //设置证书
+        if($cert){
+            //此处证书引用绝对路径
+            curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'pem');
+            curl_setopt($ch, CURLOPT_SSLCERT, $list['cert']);
+            curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'pem');
+            curl_setopt($ch, CURLOPT_SSLKEY, $list['key']);
+        }
+        //运行curl
+        $data = curl_exec($ch);
+        //返回结果
+        if($data)
+        {
+            curl_close($ch);
+            return $data;
+        }
+        else
+        {
+            $error = curl_errno($ch);
+            //echo "curl出错，错误码:$error"."<br>";
+            return json_encode(array('code'=>$error,'status'=>0));
+            //return false;
+        }
+    }
+
+    /**
+     * @param $xmlstr
+     * @return mixed
+     * User: liuan
+     * Date: 2020/8/25 11:22
+     * xml转成数组
+     */
+    public function xmlstr_to_array($xmlstr) {
+
+        //将XML转为array
+        return json_decode(json_encode(simplexml_load_string($xmlstr, 'SimpleXMLElement',LIBXML_NOCDATA)), true);
+
+    }
+
+    /**
+     * @param $order
+     * @return array|int
+     * User: liuan
+     * Date: 2020/8/25 11:44
+     * 微信退款方法
+     */
+    public function refundOrder($order){
+        $key = $order['key'];//'GZxundongkeji2017070707070707070';//在微信开放平台中的
+
+        //微信退款接口地址
+        $url = "https://api.mch.weixin.qq.com/secapi/pay/refund";
+        $onoce_str = $this->getRandChar(32);//随机字符串
+        $data["appid"] = $order['appid'];//'wx8b25a352402a35ec';//你得APPID
+        $data["mch_id"] = $order['mch_id'];//'1271505401';//商户号
+        $data["nonce_str"] = $onoce_str;
+        $data["out_refund_no"] = $order['number'];//你得订单号
+        $data["out_trade_no"] = $order['number'];//你得订单号
+        //$data["transaction_id"] = $order->trade_no;//订单支付成功后微信返回的微信数据中订单号，传了订单号可不传这个参数
+        $total_fee = $order['price'];//你得订单金额
+        $data["refund_fee"] = $total_fee*100;//支付金额
+        $data["total_fee"] = $total_fee*100;//支付金额
+
+        // 签名逻辑官网有说明，签名步骤就不解释了
+        ksort($tmpArr);
+
+        $buff = "";
+        foreach ($tmpArr as $k => $v)
+        {
+            $buff .= $k . "=" . $v . "&";
+        }
+        $buff = trim($buff, "&");
+        $stringSignTemp=$buff."&key=$key";
+        $data["sign"] =  strtoupper(md5($stringSignTemp)); //签名
+
+        $xml = $this->arrayToXml($data);
+
+        $list['cert'] = $order['cert'];
+        $list['key'] = $order['key'];
+
+        $response = $this->postXmlCurl($xml, $url ,30 ,1 , $list);
+
+        //将微信返回的结果xml转成数组
+        $result = $this->xmlstr_to_array($response);
+
+        if($result['result_code'] && $result['result_code']=='SUCCESS'){
+            //更新数据
+            return '成功';
         }else{
             return '失败';
         }
