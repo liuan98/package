@@ -240,10 +240,10 @@ class WeChatH5{
         $data["total_fee"] = $total_fee*100;//支付金额
 
         // 签名逻辑官网有说明，签名步骤就不解释了
-        ksort($tmpArr);
+        ksort($data);
 
         $buff = "";
-        foreach ($tmpArr as $k => $v)
+        foreach ($data as $k => $v)
         {
             $buff .= $k . "=" . $v . "&";
         }
