@@ -46,7 +46,8 @@ class FooMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // 根据具体业务判断逻辑走向，这里假设用户携带的token有效
-        $token = $this->request->input('token');
+//        $token = $this->request->input('token');
+        $token= $this->request->getHeaderLine('token');
         $redis = $this->container->get(\Hyperf\Redis\Redis::class);
         $code = $redis->get('token'.$token);
 
