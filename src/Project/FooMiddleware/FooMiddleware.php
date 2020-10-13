@@ -57,7 +57,7 @@ class FooMiddleware implements MiddlewareInterface
         if(!$code){
             return $this->response->json(
                 [
-                    'code' => -1,
+                    'code' => 401,
                     'data' => [
                         'error' => 'token为空,或已已失效',
                     ],
